@@ -20,7 +20,7 @@ namespace EmployeePayrollMultiThreading
             employees.Add(new Employee("fsdfd", 5000, DateTime.Parse("2/5/2020"), "Electrical", "1237894560", "Delhi", 'M'));
             employees.Add(new Employee("cds", 10000, DateTime.Parse("2/5/2020"), "Electrical", "1237894560", "Delhi", 'F'));
             employees.Add(new Employee("scv", 7000, DateTime.Parse("2/5/2020"), "Electrical", "1237894560", "Delhi", 'M'));
-            employees.Add(new Employee("wad", 5000, DateTime.Parse("2/5/2020"), "Electrical", "1237894560", "Delhi", 'M'));
+            employees.Add(new Employee("css", 5000, DateTime.Parse("2/5/2020"), "Electrical", "1237894560", "Delhi", 'M'));
 
             DateTime startTime = DateTime.Now;
             manager.AddNewEmployee(employees);

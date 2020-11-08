@@ -44,7 +44,7 @@ namespace EmployeePayrollMultiThreading
             }
             catch (Exception e)
             {
-                Console.Write(e.Message+e.StackTrace);
+                Console.Write(e.Message);
                 return false;
             }
             finally
@@ -55,12 +55,12 @@ namespace EmployeePayrollMultiThreading
 
         public bool AddNewEmployee(List<Employee> employees)
         {
-            foreach (Employee x in employees)
-            {
-                Console.WriteLine("Employee being Added: " + x.EmployeeName);
-                this.AddNewEmployee(x.EmployeeName, x.BasicPay, x.StartDate.Value, x.Department, x.PhoneNumber, x.Address, x.Gender);
-                Console.WriteLine("Employee added: " + x.EmployeeName);
-            }
+            Parallel.ForEach(employees, x =>
+             {
+                 Console.WriteLine("Employee being Added: " + x.EmployeeName);
+                 this.AddNewEmployee(x.EmployeeName, x.BasicPay, x.StartDate.Value, x.Department, x.PhoneNumber, x.Address, x.Gender);
+                 Console.WriteLine("Employee added: " + x.EmployeeName);
+             });
             return true;
         }
     }
