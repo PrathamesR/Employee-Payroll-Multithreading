@@ -57,9 +57,11 @@ namespace EmployeePayrollMultiThreading
         {
             Parallel.ForEach(employees, x =>
              {
+                 Console.WriteLine("Staring New Thread for inserting Employee: " + x.EmployeeName);
                  Console.WriteLine("Employee being Added: " + x.EmployeeName);
                  this.AddNewEmployee(x.EmployeeName, x.BasicPay, x.StartDate.Value, x.Department, x.PhoneNumber, x.Address, x.Gender);
-                 Console.WriteLine("Employee added: " + x.EmployeeName);
+                 Console.WriteLine("Employee sucessfully added: " + x.EmployeeName);
+                 Console.WriteLine("Closing for Employee: " + x.EmployeeName);
              });
             return true;
         }
