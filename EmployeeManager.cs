@@ -14,7 +14,7 @@ namespace EmployeePayrollMultiThreading
             SqlConnection connection = new SqlConnection(@"Data Source='(LocalDB)\MSSQL Server';Initial Catalog = Payroll; Integrated Security = True");
             return connection;
         }
-        public bool AddNewEmployee(string name, int basicPay, DateTime date, string department, string phoneNo, string address, char gender)
+        public bool AddNewEmployee(string name, decimal basicPay, DateTime date, string department, string phoneNo, string address, char gender)
         {
             SqlConnection connection = null;
             try
@@ -28,8 +28,8 @@ namespace EmployeePayrollMultiThreading
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@Name", name);
                     command.Parameters.AddWithValue("@basicPay", basicPay);
-                    command.Parameters.AddWithValue("@startDate", date);
-                    command.Parameters.AddWithValue("@phoneNo", phoneNo);
+                    command.Parameters.AddWithValue("@startDate", date.ToString("yyyy-MM-dd"));
+                    command.Parameters.AddWithValue("@phoneNo", decimal.Parse(phoneNo));
                     command.Parameters.AddWithValue("@department", department);
                     command.Parameters.AddWithValue("@address", address);
                     command.Parameters.AddWithValue("@gender", gender);
@@ -44,7 +44,7 @@ namespace EmployeePayrollMultiThreading
             }
             catch (Exception e)
             {
-                Console.Write(e.Message);
+                Console.Write(e.Message+e.StackTrace);
                 return false;
             }
             finally
